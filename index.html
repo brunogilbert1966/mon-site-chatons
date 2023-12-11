@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Initiation HTML CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Parlons Chatons !</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="content.html">Contenu</a></li>
+                <li><a href="form.html">Formulaire</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Bienvenue sur notre site</h2>
+        <p>Voici quelques informations intéressantes sur les chatons</p>
+        <p>Le carroussel fonctionne, n'hésitez pas à appuyer !</p>
+       
+    <!-- Carrousel d'images -->
+<div id="carousel">
+    <button id="prevBtn">⟨</button>
+    <img src="img/img_chat1.jpg" alt="Photo 1">
+    <img src="img/img_chat2.jpg" alt="Photo 2" style="display:none;">
+    <img src="img/img_chat5.jpg" alt="Photo 3" style="display:none;">
+    <button id="nextBtn">⟩</button>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2023 Bruno Gilbert. Tous droits réservés.</p>
+    </footer>
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll("#carousel img");
+        const totalImages = images.length;
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+    
+        function showImage(index) {
+            images.forEach(img => img.style.display = 'none');
+            images[index].style.display = 'block';
+        }
+    
+        prevBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            showImage(currentImageIndex);
+        });
+    
+        nextBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            showImage(currentImageIndex);
+        });
+        // Initialisation
+        showImage(currentImageIndex);
+    </script>
+    
+    
+</body>
+</html>
